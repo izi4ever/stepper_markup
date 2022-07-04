@@ -15,16 +15,16 @@ class _StepIconState extends State<StepIcon> {
   @override
   Widget build(BuildContext context) {
     if (widget.thisStepNo == widget.curStep) { 
-      return Icon(FontAwesomeIcons.circle,
+      return const Icon(FontAwesomeIcons.circle,
         size: 20,
       );
     } else if (widget.thisStepNo < widget.curStep) {
-      return Icon(FontAwesomeIcons.solidCircleCheck,
+      return const Icon(FontAwesomeIcons.solidCircleCheck,
         size: 16,
         color: Colors.lightGreen,
       );
     } else {
-      return Icon(Icons.radio_button_unchecked,
+      return const Icon(Icons.radio_button_unchecked,
         size: 18,
       );
     }

@@ -27,7 +27,7 @@ class _Page0State extends State<Page0> {
             color: Colors.blueGrey[900],
           ),
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -66,52 +66,52 @@ class _Page0State extends State<Page0> {
                 },
                 steps: <Step>[
                   Step(
-                    title: Text('Step 1 title'),
+                    title: const Text('Step 1 title'),
                     content: Container(
                       alignment: Alignment.topLeft,
-                      child: Text('Content for Step 1')
+                      child: const Text('Content for Step 1')
                     ),
                   ),
                   Step(
-                    title: Text('Step 1 title'),
+                    title: const Text('Step 1 title'),
                     content: Container(
                       alignment: Alignment.topLeft,
-                      child: Text('Content for Step 1')
+                      child: const Text('Content for Step 1')
                     ),
                   ),
                   Step(
-                    title: Text('Step 1 title'),
+                    title: const Text('Step 1 title'),
                     content: Container(
                       alignment: Alignment.topLeft,
-                      child: Text('Content for Step 1')
+                      child: const Text('Content for Step 1')
                     ),
                   ),
                   Step(
-                    title: Text('Step 1 title'),
+                    title: const Text('Step 1 title'),
                     content: Container(
                       alignment: Alignment.topLeft,
-                      child: Text('Content for Step 1')
+                      child: const Text('Content for Step 1')
                     ),
                   ),
                   Step(
-                    title: Text('Step 1 title'),
+                    title: const Text('Step 1 title'),
                     content: Container(
                       alignment: Alignment.topLeft,
-                      child: Text('Content for Step 1')
+                      child: const Text('Content for Step 1')
                     ),
                   ),
                   Step(
-                    title: Text('Step 1 title'),
+                    title: const Text('Step 1 title'),
                     content: Container(
                       alignment: Alignment.topLeft,
-                      child: Text('Content for Step 1')
+                      child: const Text('Content for Step 1')
                     ),
                   ),
                   Step(
-                    title: Text('Step 1 title'),
+                    title: const Text('Step 1 title'),
                     content: Container(
                       alignment: Alignment.topLeft,
-                      child: Text('Content for Step 1')
+                      child: const Text('Content for Step 1')
                     ),
                   ),
                 ],
@@ -129,19 +129,19 @@ class _Page0State extends State<Page0> {
             ),
             child: Column(
               children: [
-                ListTile( 
+                const ListTile( 
                   contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 22),
                   title: Text('Upcoming', style: TextStyle(
                     fontWeight: FontWeight.w900,
                     fontSize: 18,
                   ))
                 ),
-                Divider(height: 1, thickness: 0.04, color: Color(0xff000000)),
+                const Divider(height: 1, thickness: 0.04, color: Color(0xff000000)),
                 SizedBox(
                   width: double.infinity,
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 22, horizontal: 22),
-                    child: Text('You have no upcoming events')
+                    padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 22),
+                    child: const Text('You have no upcoming events')
                   ),
                 )
               ],

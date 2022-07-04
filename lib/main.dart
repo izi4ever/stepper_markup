@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.vollkornTextTheme(
           Theme.of(context).textTheme,
         ),
-        cardTheme: CardTheme(
+        cardTheme: const CardTheme(
           margin: EdgeInsets.only(top: 14),
         ),
       ),

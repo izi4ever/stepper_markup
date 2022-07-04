@@ -33,15 +33,15 @@ class _HomePageState extends State<HomePage> {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
-            children: [
-              const ListTile( 
+            children: const [
+              ListTile( 
                 contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 22),
                 title: Text('Your journey', style: TextStyle(
                   fontWeight: FontWeight.w900,
                   fontSize: 18,
                 ))
               ),
-              const Divider(height: 1, thickness: 0.04, color: Color(0xff000000)),
+              Divider(height: 1, thickness: 0.04, color: Color(0xff000000)),
               CustomStepper(),
             ],
           ),
@@ -56,19 +56,19 @@ class _HomePageState extends State<HomePage> {
             ),
             child: Column(
               children: [
-                ListTile( 
+                const ListTile( 
                   contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 22),
                   title: Text('Upcoming', style: TextStyle(
                     fontWeight: FontWeight.w900,
                     fontSize: 18,
                   ))
                 ),
-                Divider(height: 1, thickness: 0.04, color: Color(0xff000000)),
+                const Divider(height: 1, thickness: 0.04, color:  Color(0xff000000)),
                 SizedBox(
                   width: double.infinity,
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 22, horizontal: 22),
-                    child: Text('You have no upcoming events')
+                    padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 22),
+                    child: const Text('You have no upcoming events')
                   ),
                 )
               ],

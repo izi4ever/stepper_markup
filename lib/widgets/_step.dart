@@ -26,12 +26,12 @@ class _CustomStepState extends State<CustomStep> {
   Widget build(BuildContext context) {
     return DottedBorder(
       borderType: BorderType.RRect,
-      radius: Radius.circular(25),
-      dashPattern: [3, 3],
-      color: Color(0xffaaaaaa),
+      radius: const Radius.circular(25),
+      dashPattern: const [3, 3],
+      color: const Color(0xffaaaaaa),
       strokeWidth: (widget.curStep == widget.thisStepNo) ? 1 : 0.0,
       child: ListTile(
-        leading: Icon(Icons.radio_button_unchecked),
+        leading: const Icon(Icons.radio_button_unchecked),
         title: Text(widget.title),
         subtitle: Text(widget.subTitle),
         onTap: () {
