@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stepper_markup/pages/main/tab_bar_item.dart';
+import 'package:stepper_markup/main/tab_bar_item.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);

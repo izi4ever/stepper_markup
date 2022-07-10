@@ -1,7 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:stepper_markup/widgets/step_icon.dart';
-import 'package:stepper_markup/widgets/stepper_state.dart';
+import 'package:stepper_markup/main/pages/widgets/step_icon.dart';
+import 'package:stepper_markup/main/pages/widgets/stepper_state.dart';
 
 class CustomStepper extends StatefulWidget {
   const CustomStepper({Key? key}) : super(key: key);
