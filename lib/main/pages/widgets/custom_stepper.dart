@@ -14,37 +14,45 @@ class CustomStepper extends StatefulWidget {
 class _CustomStepperState extends State<CustomStepper> {
   int curStep = 0;
 
+  void onTap(int index) {
+    setState(() {
+      curStep = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Positioned(
-            top: 0,
-            bottom: 0,
-            left: 40,
-            child: Container(
-              color: Colors.grey[100],
-              width: 4,
-            )),
+          top: 0,
+          bottom: 0,
+          left: 40,
+          child: Container(
+            color: Colors.grey[100],
+            width: 4,
+          ),
+        ),
         SizedBox(
             height: 300,
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               children: [
-                ...StepperElement.values.map((StepperElement e) {
-                  late final StepperState stepperState;
-                  if (curStep == e.index) {
-                    // current
-                    stepperState = StepperState.current;
-                  } else if (curStep < e.index) {
-                    // passed
-                    stepperState = StepperState.passed;
-                  } else {
-                    // future
-                    stepperState = StepperState.future;
-                  }
+                ...StepperElement.values.map(
+                  (StepperElement e) {
+                    late final StepperState stepperState;
+                    if (curStep == e.index) {
+                      // current
+                      stepperState = StepperState.current;
+                    } else if (curStep < e.index) {
+                      // passed
+                      stepperState = StepperState.passed;
+                    } else {
+                      // future
+                      stepperState = StepperState.future;
+                    }
 
-                  return OneStep(
+                    return OneStep(
                       // curStep: curStep,
                       // curElement: e.index,
                       stepState: stepperState,
@@ -54,8 +62,12 @@ class _CustomStepperState extends State<CustomStepper> {
                         setState(() {
                           curStep = e.index;
                         });
-                      });
-                }),
+                      },
+                      // onTap: () => onTap(e.index), // What type is this function? What type is expected? // TODO
+                      // onTap: onTap(e.index), // This won't work. Why?   // TODO
+                    );
+                  },
+                ),
 
                 // DottedBorder(
                 //   borderType: BorderType.RRect,
