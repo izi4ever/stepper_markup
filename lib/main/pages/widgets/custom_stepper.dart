@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:stepper_markup/main/pages/widgets/one_step.dart';
 import 'package:stepper_markup/main/pages/widgets/step_icon.dart';
 import 'package:stepper_markup/main/pages/widgets/stepper_state.dart';
 
@@ -31,25 +32,37 @@ class _CustomStepperState extends State<CustomStepper> {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               children: [
                 ...StepperElement.values.map((e) => 
-
-                  DottedBorder(
-                    borderType: BorderType.RRect,
-                    radius: const Radius.circular(25),
-                    dashPattern: const [3, 3],
-                    color: (curStep == e.index) ? const Color(0xffaaaaaa) : Colors.white,
-                    strokeWidth: 1,
-                    child: ListTile(
-                      leading: StepIcon(thisStepNo: e.index, curStep: curStep),       // <<< Здесь состояния и логика состояний
-                      title: Text(e.title),
-                      subtitle: (curStep == e.index) ? Text(e.subtitle) : null,
-                      onTap: () {
-                        setState(() {
-                          curStep = e.index;
-                        });
-                      },
-                    ),
+                  OneStep(
+                    curStep: curStep, 
+                    curElement: e.index, 
+                    title: e.title, 
+                    subtitle: e.subtitle, 
+                    onTap: () {
+                      setState(() {
+                        curStep = e.index;
+                      });
+                    })
                   ),
-                ),
+
+                  // DottedBorder(
+                  //   borderType: BorderType.RRect,
+                  //   radius: const Radius.circular(25),
+                  //   dashPattern: const [3, 3],
+                  //   color: (curStep == e.index) ? const Color(0xffaaaaaa) : Colors.white,
+                  //   strokeWidth: 1,
+                  //   child: ListTile(
+                  //     leading: StepIcon(thisStepNo: e.index, curStep: curStep),       // <<< Здесь состояния и логика состояний
+                  //     title: Text(e.title),
+                  //     subtitle: (curStep == e.index) ? Text(e.subtitle) : null,
+                  //     onTap: () {
+                  //       setState(() {
+                  //         curStep = e.index;
+                  //       });
+                  //     },
+                  //   ),
+                  // ),
+                  
+                // ),
 
               ],
             )),
