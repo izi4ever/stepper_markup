@@ -31,39 +31,51 @@ class _CustomStepperState extends State<CustomStepper> {
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               children: [
-                ...StepperElement.values.map((e) => 
-                  OneStep(
-                    curStep: curStep, 
-                    curElement: e.index, 
-                    title: e.title, 
-                    subtitle: e.subtitle, 
-                    onTap: () {
-                      setState(() {
-                        curStep = e.index;
-                      });
-                    })
-                  ),
+                ...StepperElement.values.map((StepperElement e) {
+                  late final StepperState stepperState;
+                  if (curStep == e.index) {
+                    // current
+                    stepperState = StepperState.current;
+                  } else if (curStep < e.index) {
+                    // passed
+                    stepperState = StepperState.passed;
+                  } else {
+                    // future
+                    stepperState = StepperState.future;
+                  }
 
-                  // DottedBorder(
-                  //   borderType: BorderType.RRect,
-                  //   radius: const Radius.circular(25),
-                  //   dashPattern: const [3, 3],
-                  //   color: (curStep == e.index) ? const Color(0xffaaaaaa) : Colors.white,
-                  //   strokeWidth: 1,
-                  //   child: ListTile(
-                  //     leading: StepIcon(thisStepNo: e.index, curStep: curStep),       // <<< Здесь состояния и логика состояний
-                  //     title: Text(e.title),
-                  //     subtitle: (curStep == e.index) ? Text(e.subtitle) : null,
-                  //     onTap: () {
-                  //       setState(() {
-                  //         curStep = e.index;
-                  //       });
-                  //     },
-                  //   ),
-                  // ),
-                  
+                  return OneStep(
+                      // curStep: curStep,
+                      // curElement: e.index,
+                      stepState: stepperState,
+                      title: e.title,
+                      subtitle: e.subtitle,
+                      onTap: () {
+                        setState(() {
+                          curStep = e.index;
+                        });
+                      });
+                }),
+
+                // DottedBorder(
+                //   borderType: BorderType.RRect,
+                //   radius: const Radius.circular(25),
+                //   dashPattern: const [3, 3],
+                //   color: (curStep == e.index) ? const Color(0xffaaaaaa) : Colors.white,
+                //   strokeWidth: 1,
+                //   child: ListTile(
+                //     leading: StepIcon(thisStepNo: e.index, curStep: curStep),       // <<< Здесь состояния и логика состояний
+                //     title: Text(e.title),
+                //     subtitle: (curStep == e.index) ? Text(e.subtitle) : null,
+                //     onTap: () {
+                //       setState(() {
+                //         curStep = e.index;
+                //       });
+                //     },
+                //   ),
                 // ),
 
+                // ),
               ],
             )),
       ],
