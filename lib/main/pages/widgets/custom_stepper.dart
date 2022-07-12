@@ -1,8 +1,8 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:stepper_markup/main/pages/widgets/one_step.dart';
-import 'package:stepper_markup/main/pages/widgets/step_icon.dart';
-import 'package:stepper_markup/main/pages/widgets/stepper_state.dart';
+
+import 'one_step.dart';
+import 'stepper_state.dart';
+import 'stepper_element.dart';
 
 class CustomStepper extends StatefulWidget {
   const CustomStepper({Key? key}) : super(key: key);
@@ -34,62 +34,29 @@ class _CustomStepperState extends State<CustomStepper> {
           ),
         ),
         SizedBox(
-            height: 300,
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              children: [
-                ...StepperElement.values.map(
-                  (StepperElement e) {
-                    late final StepperState stepperState;
+          height: 300,
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            children: [
+              ...StepperElement.values.map(
+                (StepperElement e) => OneStep(
+                  stepState: () {
                     if (curStep == e.index) {
-                      // current
-                      stepperState = StepperState.current;
-                    } else if (curStep < e.index) {
-                      // passed
-                      stepperState = StepperState.passed;
+                      return StepperState.current;
+                    } else if (curStep > e.index) {
+                      return StepperState.passed;
                     } else {
-                      // future
-                      stepperState = StepperState.future;
+                      return StepperState.future;
                     }
-
-                    return OneStep(
-                      // curStep: curStep,
-                      // curElement: e.index,
-                      stepState: stepperState,
-                      title: e.title,
-                      subtitle: e.subtitle,
-                      onTap: () {
-                        setState(() {
-                          curStep = e.index;
-                        });
-                      },
-                      // onTap: () => onTap(e.index), // What type is this function? What type is expected? // TODO
-                      // onTap: onTap(e.index), // This won't work. Why?   // TODO
-                    );
-                  },
+                  }(),
+                  title: e.title,
+                  subtitle: (curStep == e.index) ? e.subtitle : null,
+                  onTap: () => onTap(e.index),
                 ),
-
-                // DottedBorder(
-                //   borderType: BorderType.RRect,
-                //   radius: const Radius.circular(25),
-                //   dashPattern: const [3, 3],
-                //   color: (curStep == e.index) ? const Color(0xffaaaaaa) : Colors.white,
-                //   strokeWidth: 1,
-                //   child: ListTile(
-                //     leading: StepIcon(thisStepNo: e.index, curStep: curStep),       // <<< Здесь состояния и логика состояний
-                //     title: Text(e.title),
-                //     subtitle: (curStep == e.index) ? Text(e.subtitle) : null,
-                //     onTap: () {
-                //       setState(() {
-                //         curStep = e.index;
-                //       });
-                //     },
-                //   ),
-                // ),
-
-                // ),
-              ],
-            )),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
