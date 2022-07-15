@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stepper_markup/main/tab_bar_item.dart';
+import 'popup_calendar/popup_calendar.dart';
+import 'tab_bar_item.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -45,6 +46,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => popupCalendar(context),
+        child: const Icon(Icons.playlist_add),
+      )
     );
   }
 }

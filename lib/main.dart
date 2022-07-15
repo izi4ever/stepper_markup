@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
+import 'theme.dart';
 import 'main/bottom_nav_bar.dart';
 
 void main() => runApp(const MyApp());
@@ -12,19 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Stepper Markup',
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xfff4f4f4),
-          elevation: 0,
-        ),
-        scaffoldBackgroundColor: const Color(0xfff1f5f9),
-        textTheme: GoogleFonts.vollkornTextTheme(
-          Theme.of(context).textTheme,
-        ),
-        cardTheme: const CardTheme(
-          margin: EdgeInsets.only(top: 14),
-        ),
-      ),
+      theme: customTheme(context),
       home: const BottomNavBar(),
     );
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:stepper_markup/main/pages/home_page.dart';
-import 'package:stepper_markup/main/pages/page_1.dart';
-import 'package:stepper_markup/main/pages/page_2.dart';
+import 'home_page/home_page.dart';
+import 'home_page/page_1.dart';
+import 'home_page/page_2.dart';
 
 enum TabBarItem  {
   home(icon: FontAwesomeIcons.house, title: 'Home', body: HomePage()),
