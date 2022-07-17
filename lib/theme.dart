@@ -4,9 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 ThemeData customTheme(BuildContext context) {
   return ThemeData(
     primaryColor: Colors.blueGrey[900],
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Color(0xfff4f4f4),
+    appBarTheme: AppBarTheme(
+      backgroundColor: const Color(0xfff4f4f4),
+      foregroundColor: Colors.blueGrey[900],
       elevation: 0,
+      shape: const Border(bottom: BorderSide(width: 1, color: Color(0xffdddddd))),
     ),
     scaffoldBackgroundColor: const Color(0xfff1f5f9),
     textTheme: GoogleFonts.vollkornTextTheme(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:stepper_markup/main/popup_calendar/custom_calendar.dart';
+// import '__custom_calendar.dart';
+
+import 'marked_calendar.dart';
 
 popupCalendar(BuildContext context) {
-  
   showDialog(
     barrierColor: Colors.grey[300]?.withOpacity(0.7),                              // <<< Цвет затемнения под диалоговым окном .withOpacity(0.9)
     context: context, 
@@ -28,7 +29,8 @@ popupCalendar(BuildContext context) {
                   ),
                 ),
               ),
-              CustomCalendar(),
+              // CustomCalendar(),                                                 // <<< Не выделяются дни с датами
+              MarkedCalendar(),
             ],
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
+import 'package:flutter_calendar_carousel/classes/event_list.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart' show CalendarCarousel;
 
 class CustomCalendar extends StatefulWidget {
@@ -11,7 +12,19 @@ class CustomCalendar extends StatefulWidget {
 
 class _CustomCalendarState extends State<CustomCalendar> {
 
-  var _markedDateMap;
+  // EventList<Event> _markedDateMap ;
+
+  final EventList<Event> _markedDateMap = EventList<Event>(
+    events: {
+      DateTime(2022, 7, 17): [Event(date: DateTime(2022, 7, 17), dot: const SizedBox.shrink())],
+      DateTime(2022, 7, 18): [Event(date: DateTime(2022, 7, 17), dot: const SizedBox.shrink())],
+      DateTime(2022, 7, 19): [Event(date: DateTime(2022, 7, 17), dot: const SizedBox.shrink())],
+      DateTime(2022, 7, 21): [Event(date: DateTime(2022, 7, 17), dot: const SizedBox.shrink())],
+      DateTime(2022, 7, 23): [Event(date: DateTime(2022, 7, 17), dot: const SizedBox.shrink())],
+    },
+  );
+
+
   late DateTime _currentDate;
 
   DateTime today() {                                                            // <<< Потому что now() ≠ сегодня
@@ -30,42 +43,44 @@ class _CustomCalendarState extends State<CustomCalendar> {
     return Column(
       children: [
         Container(
-          // color: Colors.grey[100],
+          // color: Colors.grey[100],                                              // Для проверки размеров области календаря
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: CalendarCarousel<Event>(
             onDayPressed: (DateTime date, List<Event> events) {
               setState(() => _currentDate = date);
             },
-            customDayBuilder: (   /// you can provide your own build function to make custom day containers
-              bool isSelectable,
-              int index,
-              bool isSelectedDay,
-              bool isToday,
-              bool isPrevMonthDay,
-              TextStyle textStyle,
-              bool isNextMonthDay,
-              bool isThisMonthDay,
-              DateTime day,
-            ) {
-                /// If you return null, [CalendarCarousel] will build container for current [day] with default function.
-                /// This way you can build custom containers for specific days only, leaving rest as default.
+            // customDayBuilder: (   /// you can provide your own build function to make custom day containers
+            //   bool isSelectable,
+            //   int index,
+            //   bool isSelectedDay,
+            //   bool isToday,
+            //   bool isPrevMonthDay,
+            //   TextStyle textStyle,
+            //   bool isNextMonthDay,
+            //   bool isThisMonthDay,
+            //   DateTime day,
+            // ) {
+            //     /// If you return null, [CalendarCarousel] will build container for current [day] with default function.
+            //     /// This way you can build custom containers for specific days only, leaving rest as default.
 
-                // Example: every 15th of month, we have a flight, we can place an icon in the container like that:
-                // if (day.day == 15) {
-                //   return Center(
-                //     child: Icon(Icons.local_airport),
-                //   );
-                // } else {
-                //   return null;
-                // }
-            },
+            //     // Example: every 15th of month, we have a flight, we can place an icon in the container like that:
+            //     // if (day.day == 15) {
+            //     //   return Center(
+            //     //     child: Icon(Icons.local_airport),
+            //     //   );
+            //     // } else {
+            //     //   return null;
+            //     // }
+            // },
             selectedDateTime: _currentDate,
             weekFormat: false,
             markedDatesMap: _markedDateMap,
             height: 350.0,
             daysHaveCircularBorder: true, /// null for not rendering any border, true for circular border, false for rectangular border
-            todayButtonColor: Colors.transparent,
-            todayBorderColor: Colors.blueGrey[900]!,
+            // todayButtonColor: Colors.transparent,
+            // todayBorderColor: Colors.blueGrey[900]!,
+            todayButtonColor: Colors.grey[300]!,
+            todayBorderColor: Colors.transparent,
             todayTextStyle: TextStyle(
               color: (_currentDate == today()) ? Colors.white : Colors.black,
             ),
@@ -84,6 +99,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
               fontWeight: FontWeight.w800,
             ),
             iconColor: Colors.blueGrey[900]!,
+            markedDateCustomShapeBorder: CircleBorder(side: BorderSide(color: Colors.blueGrey[900]!)),
             firstDayOfWeek: 1,                                                  // <<< Надо запрограмировать из пресетов юзера
             headerMargin: const EdgeInsets.only(top: 0, bottom: 10),
             weekDayMargin: const EdgeInsets.only(bottom: 10),

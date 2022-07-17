@@ -48,6 +48,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => popupCalendar(context),
+        // onPressed: () {
+        //   Route route = MaterialPageRoute(builder: (context) => CalendarPage2());
+        //   Navigator.push(context, route);
+        // },
         child: const Icon(Icons.playlist_add),
       )
     );
