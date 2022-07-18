@@ -45,7 +45,9 @@ class _CalendarPopupState extends State<CalendarPopup> {
             MarkedCalendar(
               onDateTimeTap: (DateTime time) {
                 print('onDateTimeTap triggered: $time');
-                selectedDate = time;
+                setState(() {
+                  selectedDate = time;                  
+                });
               },
             ),
           ],
@@ -56,8 +58,19 @@ class _CalendarPopupState extends State<CalendarPopup> {
           width: double.infinity,
           // TODO: change button style depending on selectedDate state.
           child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: () {
+                if (selectedDate != null) {
+                  return Colors.blueGrey[900];
+                } else {
+                  return Colors.blueGrey[100];
+                }
+              }(),
+            ),
             onPressed: () {
-              Navigator.pop(context, selectedDate);
+              if (selectedDate != null) {
+                Navigator.pop(context, selectedDate);
+              }
             },
             child: const Text('Choose'),
           ),

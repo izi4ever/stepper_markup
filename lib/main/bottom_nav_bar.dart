@@ -58,10 +58,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
           // TODO (Babich) reflect result in UI
           print('Popup result is: $result');
         },
-        // onPressed: () {
-        //   Route route = MaterialPageRoute(builder: (context) => CalendarPage2());
-        //   Navigator.push(context, route);
-        // },
         child: const Icon(Icons.playlist_add),
       )
     );
