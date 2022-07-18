@@ -47,7 +47,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
         onTap: _onItemTapped,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => popupCalendar(context),
+        onPressed: () async {
+          final result = await showDialog<DateTime>(
+              barrierColor: Colors.grey[300]?.withOpacity(0.7),                              // <<< Цвет затемнения под диалоговым окном .withOpacity(0.9)
+              context: context,
+              builder: (context) {
+                return CalendarPopup();
+              }
+          );
+          // TODO (Babich) reflect result in UI
+          print('Popup result is: $result');
+        },
         // onPressed: () {
         //   Route route = MaterialPageRoute(builder: (context) => CalendarPage2());
         //   Navigator.push(context, route);
