@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import '__custom_calendar.dart';
 
 import 'marked_calendar.dart';
 
@@ -21,14 +20,12 @@ class _CalendarPopupState extends State<CalendarPopup> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      // scrollable: true,                                                       // <<< viewPort error
-      insetPadding: EdgeInsets.zero,                                          // <<< Отступы от экрана!!!
+      insetPadding: EdgeInsets.zero,
       contentPadding: const EdgeInsets.only(top: 7, left: 10, right: 10, ),
-      content: SizedBox(                                                      // <<<
-        width: MediaQuery.of(context).size.width * 0.83,                      // <<< Ширина экрана * множитель
-        // width: double.maxFinite * 0.85,                                       // Так умножение не работает
-        child: ListView(                                                      // <<<
-          shrinkWrap: true,                                                   // <<< Схлопывает по высоте содержимого
+      content: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.83,
+        child: ListView(
+          shrinkWrap: true,
           children: [
             Container(
               alignment: Alignment.topRight,
@@ -40,7 +37,6 @@ class _CalendarPopupState extends State<CalendarPopup> {
                 ),
               ),
             ),
-            // CustomCalendar(),                                                 // <<< Не выделяются дни с датами
             // TODO: pass function, which will be setting local selected date \ time
             MarkedCalendar(
               onDateTimeTap: (DateTime time) {

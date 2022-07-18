@@ -49,7 +49,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           final result = await showDialog<DateTime>(
-              barrierColor: Colors.grey[300]?.withOpacity(0.7),                              // <<< Цвет затемнения под диалоговым окном .withOpacity(0.9)
+              barrierColor: Colors.grey[300]?.withOpacity(0.7),
               context: context,
               builder: (context) {
                 return CalendarPopup();

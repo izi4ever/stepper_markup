@@ -25,7 +25,7 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
 
   late DateTime _currentDate;
 
-  DateTime today() {                                                            // <<< Потому что now() ≠ сегодня
+  DateTime today() {
     DateTime now = DateTime.now();
     return DateTime(now.year, now.month, now.day);
   }
@@ -37,7 +37,7 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
     getDataFromInputList();
     selectedDayIndex;
     print(selectedDayIndex);
-    // getFreeTimeListByDayIndex(selectedDayIndex);
+    // getFreeTimeListByDayIndex(selectedDayIndex);                                // Как оно само подгружается без initState?
 
     super.initState();
   }
@@ -47,7 +47,7 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
       if (freeTime[i][0] == today()) {
         selectedDayIndex = i;
         // setState(() {
-        //   selectedDayIndex = i;
+        //   selectedDayIndex = i;                                      // Почему это состояние само обновляется без setState?
         // });
       }
       _markedDateMap.add(
@@ -62,7 +62,7 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
       );
     }
 
-    // freeTime.map(
+    // freeTime.map(                                  // Почему у меня тут не вышло добачить через map, а только в цикле выше?
     //   (e) => _markedDateMap.add(
     //     e[e.index][0],
     //     Event(
@@ -93,7 +93,7 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
                 child: Text(
                   '${e.format(context)}',
                   maxLines: 1,
-                  style: GoogleFonts.roboto(                                    // <<< 
+                  style: GoogleFonts.roboto(
                     textStyle: TextStyle(
                       color: ('${e.format(context)}' == highlightTime) ? Colors.white : Colors.blueGrey[900]!,
                       fontSize: 12,
@@ -103,7 +103,7 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
                 ),
               ),
               onTap: () {
-                selectedTime = DateTime(_currentDate.year, _currentDate.month, _currentDate.day, e.hour, e.minute); // <<< Как конвертировать
+                selectedTime = DateTime(_currentDate.year, _currentDate.month, _currentDate.day, e.hour, e.minute);
                 print(selectedTime);
                 widget.onDateTimeTap(selectedTime);
                 print('${e.format(context)}');
@@ -134,7 +134,7 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
   Widget build(BuildContext context) {
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
       height: 350.0,
-      daysHaveCircularBorder: true,                                             /// null for not rendering any border, true for circular border, false for rectangular border
+      daysHaveCircularBorder: true,
       onDayPressed: (DateTime date, List<Event> events) {
         setState(() {
           _currentDate = date;
@@ -150,21 +150,21 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
         });
       },
       selectedDateTime: _currentDate,
-      selectedDayButtonColor: Colors.blueGrey[900]!,                          // <<< []!
-      selectedDayBorderColor: Colors.transparent,                             // <<< color none
+      selectedDayButtonColor: Colors.blueGrey[900]!,
+      selectedDayBorderColor: Colors.transparent,
       todayButtonColor: Colors.transparent,
       todayBorderColor: Colors.blueGrey[900]!,
       todayTextStyle: TextStyle(
         color: (_currentDate == today()) ? Colors.white : Colors.black,
       ),
       weekDayMargin: const EdgeInsets.only(bottom: 10),
-      firstDayOfWeek: MaterialLocalizations.of(context).firstDayOfWeekIndex,    // <<< Перый день недели из локальных настроек устройства
+      firstDayOfWeek: MaterialLocalizations.of(context).firstDayOfWeekIndex,
       weekFormat: false,
       weekendTextStyle: const TextStyle(
         color: Colors.black,
       ),
       weekdayTextStyle: TextStyle(
-        fontWeight: FontWeight.w800,                                            // <<< .bold, w900
+        fontWeight: FontWeight.w800,
         color: Colors.blueGrey[900],
       ),
       headerTextStyle: TextStyle(
@@ -172,16 +172,15 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
         color: Colors.blueGrey[900],
         fontWeight: FontWeight.w800,
       ),
-      iconColor: Colors.blueGrey[900]!,                                       // <<< Стрелки листания месяцев
+      iconColor: Colors.blueGrey[900]!,
       headerMargin: const EdgeInsets.only(top: 0, bottom: 10),
       markedDatesMap: _markedDateMap,
       markedDateShowIcon: true,
       markedDateIconMaxShown: 1,
-      markedDateMoreShowTotal: null,                                            // null for not showing hidden events indicator
+      markedDateMoreShowTotal: null,
       markedDateIconBuilder: (event) {
         return event.icon;
       },
-      // markedDateCustomShapeBorder: CircleBorder(side: BorderSide(width: 3, color: Color(0xFFDCE2E8))),
       dayPadding: 0,
     );
 
@@ -192,14 +191,10 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
           child: _calendarCarouselNoHeader,
         ),
         Container(
-          alignment: Alignment.topLeft,                                         // <<< По центру был не текст, а весь виджет Text
+          alignment: Alignment.topLeft,
           padding: const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 11),
           child: Text(
-            'Available time'.toUpperCase(),                                     // <<< UPPERCASE
-            // style: TextStyle(
-            //   color: Colors.grey[600],
-            //   fontSize: 13,
-            // ),
+            'Available time'.toUpperCase(),
             style: GoogleFonts.roboto(
               textStyle: TextStyle(
                 color: Colors.grey[600],
