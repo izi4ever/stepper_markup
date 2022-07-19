@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Stepper Markup',
       theme: customTheme(context),
-      home: const BottomNavBar(),
+      home: BottomNavBar(),
     );
   }
 }

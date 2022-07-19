@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_page/home_page.dart';
 import 'popup_calendar/popup_calendar.dart';
 import 'tab_bar_item.dart';
 
@@ -57,6 +58,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
           );
           // TODO (Babich) reflect result in UI
           print('Popup result is: $result');
+          
+          setState(() {
+            result;
+            HomePage(upToDateTime: result.toString());
+          });
+
         },
         child: const Icon(Icons.playlist_add),
       )

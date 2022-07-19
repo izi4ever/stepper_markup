@@ -5,11 +5,11 @@ import 'home_page/page_1.dart';
 import 'home_page/page_2.dart';
 
 enum TabBarItem  {
-  home(icon: FontAwesomeIcons.house, title: 'Home', body: HomePage(upToDateTime: '')),
+  home(icon: FontAwesomeIcons.house, title: 'Home', body: HomePage(upToDateTime: '',)),
   two(icon: FontAwesomeIcons.solidCircleQuestion, title: 'Two', body: Page1()),
   three(icon: FontAwesomeIcons.solidCalendarCheck, title: 'Three', body: Page2());
 
-  TabBarItem({
+  const TabBarItem({
     required this.icon,
     required this.title,
     required this.body,
