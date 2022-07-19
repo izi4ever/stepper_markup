@@ -3,7 +3,7 @@ import 'popup_calendar/popup_calendar.dart';
 import 'tab_bar_item.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  BottomNavBar({Key? key}) : super(key: key);
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
