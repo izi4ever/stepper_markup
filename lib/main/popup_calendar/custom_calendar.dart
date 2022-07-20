@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'free_time_list.dart';
 
-class MarkedCalendar extends StatefulWidget {
-  MarkedCalendar({
+class CustomCalendar extends StatefulWidget {
+  const CustomCalendar({
     required this.onDateTimeTap,
     Key? key,
   }) : super(key: key);
@@ -15,14 +15,13 @@ class MarkedCalendar extends StatefulWidget {
   final void Function(DateTime) onDateTimeTap;
 
   @override
-  State<MarkedCalendar> createState() => _MarkedCalendarState();
+  State<CustomCalendar> createState() => _CustomCalendarState();
 }
 
-class _MarkedCalendarState extends State<MarkedCalendar> {
+class _CustomCalendarState extends State<CustomCalendar> {
   int selectedDayIndex = -1;
   late DateTime selectedTime;
   String highlightTime = '';
-
   late DateTime _currentDate;
 
   DateTime today() {
@@ -33,22 +32,20 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
   @override
   void initState() {
     _currentDate = today();
-
     getDataFromInputList();
     selectedDayIndex;
-    print(selectedDayIndex);
-    // getFreeTimeListByDayIndex(selectedDayIndex);                                // Как оно само подгружается без initState?
 
     super.initState();
   }
+
+  final EventList<Event> _markedDateMap = EventList<Event>(
+    events: {},
+  );
 
   void getDataFromInputList() {
     for (int i = 0; i < freeTime.length; i++) {
       if (freeTime[i][0] == today()) {
         selectedDayIndex = i;
-        // setState(() {
-        //   selectedDayIndex = i;                                      // Почему это состояние само обновляется без setState?
-        // });
       }
       _markedDateMap.add(
         freeTime[i][0],
@@ -61,18 +58,6 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
         ),
       );
     }
-
-    // freeTime.map(                                  // Почему у меня тут не вышло добачить через map, а только в цикле выше?
-    //   (e) => _markedDateMap.add(
-    //     e[e.index][0],
-    //     Event(
-    //       date: e[e.index][0],
-    //       icon: freeDayIcon(
-    //         e[e.index][0].day.toString(),
-    //       ),
-    //     ),
-    //   ),
-    // ).toList();
   }
 
   List getFreeTimeListByDayIndex(int index) {
@@ -104,9 +89,7 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
               ),
               onTap: () {
                 selectedTime = DateTime(_currentDate.year, _currentDate.month, _currentDate.day, e.hour, e.minute);
-                print(selectedTime);
                 widget.onDateTimeTap(selectedTime);
-                print('${e.format(context)}');
                 setState(() {
                   highlightTime = '${e.format(context)}';
                 });
@@ -124,10 +107,6 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
         child: Text(day, style: const TextStyle(color: Colors.black, fontSize: 14)),
       );
 
-  final EventList<Event> _markedDateMap = EventList<Event>(
-    events: {},
-  );
-
   late CalendarCarousel _calendarCarouselNoHeader;
 
   @override
@@ -139,8 +118,6 @@ class _MarkedCalendarState extends State<MarkedCalendar> {
         setState(() {
           _currentDate = date;
           highlightTime = '';
-          // selectedTime = null;
-          // print('Selected time is $selectedTime');
           
           if (events.isNotEmpty) {
             selectedDayIndex = events[0].id!;

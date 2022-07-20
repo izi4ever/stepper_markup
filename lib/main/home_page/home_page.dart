@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 
 import 'widgets/custom_stepper.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({
+  HomePage({
     Key? key,
     required this.upToDateTime,
   }) : super(key: key);
 
-  final String upToDateTime;
+  DateTime? upToDateTime;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -73,7 +74,16 @@ class _HomePageState extends State<HomePage> {
                   width: double.infinity,
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 22),
-                    child: Text(widget.upToDateTime),
+                    child: Text(
+                      () {
+                        if (widget.upToDateTime == null) {
+                          return 'You have no upcoming events';
+                        } else {
+                          DateTime? dt = widget.upToDateTime;
+                          return DateFormat().add_yMMMMd().add_jm().format(dt!);
+                        }
+                      }()
+                    ),
                   ),
                 )
               ],

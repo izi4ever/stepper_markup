@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'marked_calendar.dart';
+import 'custom_calendar.dart';
 
-
-class CalendarPopup extends StatefulWidget {
-  const CalendarPopup({
-    Key? key,
-  }) : super(key: key);
+class ShowAlertDialog extends StatefulWidget {
+  const ShowAlertDialog({Key? key}) : super(key: key);
 
   @override
-  State<CalendarPopup> createState() => _CalendarPopupState();
+  State<ShowAlertDialog> createState() => _ShowAlertDialogState();
 }
 
-class _CalendarPopupState extends State<CalendarPopup> {
-
+class _ShowAlertDialogState extends State<ShowAlertDialog> {
   DateTime? selectedDate;
 
   @override
@@ -37,10 +33,8 @@ class _CalendarPopupState extends State<CalendarPopup> {
                 ),
               ),
             ),
-            // TODO: pass function, which will be setting local selected date \ time
-            MarkedCalendar(
+            CustomCalendar(
               onDateTimeTap: (DateTime time) {
-                print('onDateTimeTap triggered: $time');
                 setState(() {
                   selectedDate = time;                  
                 });
@@ -52,7 +46,6 @@ class _CalendarPopupState extends State<CalendarPopup> {
       actions: <Widget>[
         SizedBox(
           width: double.infinity,
-          // TODO: change button style depending on selectedDate state.
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: () {

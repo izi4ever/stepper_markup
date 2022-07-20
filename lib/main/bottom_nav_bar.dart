@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:stepper_markup/main/home_page/page_1.dart';
+import 'package:stepper_markup/main/home_page/page_2.dart';
 import 'home_page/home_page.dart';
-import 'popup_calendar/popup_calendar.dart';
+import 'popup_calendar/alert_dialog.dart';
 import 'tab_bar_item.dart';
 
 class BottomNavBar extends StatefulWidget {
-  BottomNavBar({Key? key}) : super(key: key);
+  const BottomNavBar({Key? key}) : super(key: key);
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -12,6 +14,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
+  DateTime? lastTime;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -26,7 +29,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
         toolbarHeight: 10,
         shape: const Border(bottom: BorderSide(width: 1, color: Color(0xffdddddd))),
       ),
-      body: TabBarItem.values[_selectedIndex].body,
+      body: () {
+        switch (_selectedIndex) {
+          case 0: return HomePage(upToDateTime: lastTime);
+          case 1: return const Page1();
+          case 2: return const Page2();
+        }
+      }(),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           ...TabBarItem.values.map(
@@ -53,17 +62,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
               barrierColor: Colors.grey[300]?.withOpacity(0.7),
               context: context,
               builder: (context) {
-                return CalendarPopup();
+                return const ShowAlertDialog();
               }
           );
-          // TODO (Babich) reflect result in UI
-          print('Popup result is: $result');
-          
           setState(() {
-            result;
-            HomePage(upToDateTime: result.toString());
+            lastTime = result;
           });
-
         },
         child: const Icon(Icons.playlist_add),
       )

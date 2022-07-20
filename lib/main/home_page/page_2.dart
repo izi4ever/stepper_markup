@@ -14,7 +14,7 @@ class Page2 extends StatelessWidget {
           final dialogResult = await showDialog<bool>(
             context: context, 
             builder: (context) {
-              return YesNo();
+              return const YesNo();
             }
           );
           print('Result from dialog: $dialogResult');
