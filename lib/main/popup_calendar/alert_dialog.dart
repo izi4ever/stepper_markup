@@ -34,7 +34,7 @@ class _ShowAlertDialogState extends State<ShowAlertDialog> {
               ),
             ),
             CustomCalendar(
-              onDateTimeTap: (DateTime time) {
+              onDateTimeTap: (DateTime? time) {
                 setState(() {
                   selectedDate = time;                  
                 });

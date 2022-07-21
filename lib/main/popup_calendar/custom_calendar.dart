@@ -12,7 +12,7 @@ class CustomCalendar extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  final void Function(DateTime) onDateTimeTap;
+  final void Function(DateTime?) onDateTimeTap;
 
   @override
   State<CustomCalendar> createState() => _CustomCalendarState();
@@ -117,6 +117,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
       onDayPressed: (DateTime date, List<Event> events) {
         setState(() {
           _currentDate = date;
+          widget.onDateTimeTap(null);
           highlightTime = '';
           
           if (events.isNotEmpty) {
