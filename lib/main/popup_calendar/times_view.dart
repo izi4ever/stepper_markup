@@ -8,13 +8,13 @@ class TimesView extends StatefulWidget {
     Key? key,
     required this.selectedDayIndex,
     required this.onDateTimeTap,
-    required this.highlightTime,
+    // required this.highlightTime,
     required this.selectedDay,
   }) : super(key: key);
 
   int selectedDayIndex;
   void Function(DateTime?) onDateTimeTap;
-  String? highlightTime;
+  // TimeOfDay? highlightTime;
   DateTime selectedDay;
 
   @override
@@ -23,6 +23,7 @@ class TimesView extends StatefulWidget {
 
 class _TimesViewState extends State<TimesView> {
   late DateTime selectedTime;
+  TimeOfDay? highlightTime;
 
   List getFreeTimeListByDayIndex(int index) {
     if (index > -1) {
@@ -32,20 +33,7 @@ class _TimesViewState extends State<TimesView> {
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  // color: ('${e.format(context)}' == widget.highlightTime) ? Colors.blueGrey[900]! : Colors.white,
-                  color: () {
-                    if ('${e.format(context)}' == widget.highlightTime) {
-                      print('==');
-                      print('${e.format(context)}');
-                      print(widget.highlightTime);
-                      return Colors.blueGrey[900]!;
-                    } else {
-                      print('!=');
-                      print('${e.format(context)}');
-                      print(widget.highlightTime);
-                      return Colors.white;
-                    }
-                  }(),
+                  color: (e == highlightTime) ? Colors.blueGrey[900]! : Colors.white,
                   border: Border.all(
                     color: Colors.blueGrey[800]!,
                     width: 1.2,
@@ -57,7 +45,7 @@ class _TimesViewState extends State<TimesView> {
                   maxLines: 1,
                   style: GoogleFonts.roboto(
                     textStyle: TextStyle(
-                      color: ('${e.format(context)}' == widget.highlightTime) ? Colors.white : Colors.blueGrey[900]!,
+                      color: (e == highlightTime) ? Colors.white : Colors.blueGrey[900]!,
                       fontSize: 12,
                       fontWeight: FontWeight.w500
                     ),
@@ -68,12 +56,7 @@ class _TimesViewState extends State<TimesView> {
                 selectedTime = DateTime(widget.selectedDay.year, widget.selectedDay.month, widget.selectedDay.day, e.hour, e.minute);
                 widget.onDateTimeTap(selectedTime);
                 setState(() {
-                  print('onTap');
-                  print('${e.format(context)}');
-                  print(widget.highlightTime);
-                  widget.highlightTime = '${e.format(context)}';
-                  print('${e.format(context)}');
-                  print(widget.highlightTime);
+                  highlightTime = e;
                 });
               },
             ),
@@ -86,6 +69,7 @@ class _TimesViewState extends State<TimesView> {
 
   @override
   Widget build(BuildContext context) {
+    // highlightTime = null;
     return GridView.count(
       crossAxisCount: 4,
       mainAxisSpacing: 12,

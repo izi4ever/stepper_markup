@@ -16,7 +16,7 @@ class CustomCalendar extends StatefulWidget {
 }
 
 class _CustomCalendarState extends State<CustomCalendar> {
-  String? highlightTime;
+  // TimeOfDay? highlightTime;
   int selectedDayIndex = -1;
 
   DateTime getToday() {
@@ -46,11 +46,11 @@ class _CustomCalendarState extends State<CustomCalendar> {
                 widget.onDateTimeTap(value);
               });
             }, 
-            highlightTimeValue: (String? value) {
-              setState(() {
-                highlightTime = value;
-              });
-            }, 
+            // highlightTimeValue: (TimeOfDay? value) {
+            //   setState(() {
+            //     highlightTime = value;
+            //   });
+            // }, 
             selectedDayID: (int value) {
               setState(() {
                 selectedDayIndex = value;
@@ -88,7 +88,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
                 widget.onDateTimeTap(value);
               });
             }, 
-            highlightTime: highlightTime, 
+            // highlightTime: highlightTime, 
             selectedDay: selectedDay,
           ),
         ),

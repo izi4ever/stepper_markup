@@ -8,14 +8,14 @@ class MonthView extends StatefulWidget {
   MonthView({
     Key? key,
     required this.selectedTimeValue,
-    required this.highlightTimeValue,
+    // required this.highlightTimeValue,
     required this.selectedDayID,
     required this.selectedDay,
     required this.today,
   }) : super(key: key);
 
   void Function(DateTime?) selectedTimeValue;
-  void Function(String?) highlightTimeValue;
+  // void Function(TimeOfDay?) highlightTimeValue;
   void Function(int) selectedDayID;
   final void Function(DateTime) selectedDay;
   // DateTime selectedDay;
@@ -31,10 +31,7 @@ class _MonthViewState extends State<MonthView> {
   @override
   void initState() {
     _currentDate = widget.today;
-    // widget.selectedDay(_currentDate);
     getDataFromInputList();
-    // widget.selectedDayID(-1);
-    // widget.highlightTimeValue('');
 
     super.initState();
   }
@@ -77,7 +74,7 @@ class _MonthViewState extends State<MonthView> {
           widget.selectedDay(date);
           // widget.selectedDay(_currentDate);
           widget.selectedTimeValue(null);
-          widget.highlightTimeValue(null);
+          // widget.highlightTimeValue(null);
           
           if (events.isNotEmpty) {
             widget.selectedDayID(events[0].id!);
