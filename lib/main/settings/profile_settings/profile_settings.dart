@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 
 import '../../../theme/tpl_page_body_padding.dart';
 
-class Programs extends StatefulWidget {
-  const Programs({Key? key}) : super(key: key);
+class ProfileSettings extends StatefulWidget {
+  ProfileSettings({Key? key}) : super(key: key);
 
   @override
-  State<Programs> createState() => _ProgramsState();
+  State<ProfileSettings> createState() => _ProfileSettingsState();
 }
 
-class _ProgramsState extends State<Programs> {
+class _ProfileSettingsState extends State<ProfileSettings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Programs'),
+        title: const Text('Your profile'),
         centerTitle: true,
       ),
       body: PageBodyPadding(
         children: const [
-          Text('Programs'),
+          Text('Your profile'),
         ]
       ),
     );

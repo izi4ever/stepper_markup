@@ -23,7 +23,10 @@ class _SettingsGridState extends State<SettingsGrid> {
       children: [
         ...SettingsPages.values.map(
           (e) => GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Route route = MaterialPageRoute(builder: (context) => e.body);
+              Navigator.push(context, route);
+            },
             child: Card(
               color: const Color(0xfffafbfd),
               elevation: 2.9,

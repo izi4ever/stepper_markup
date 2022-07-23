@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:stepper_markup/main/settings/profile_settings/profile_settings.dart';
 
 class SettingsHeader extends StatefulWidget {
   SettingsHeader({Key? key}) : super(key: key);
@@ -15,6 +16,10 @@ class _SettingsHeaderState extends State<SettingsHeader> {
       children: [
         Expanded(
           child: GestureDetector(
+            onTap: () {
+              Route route = MaterialPageRoute(builder: (context) => ProfileSettings());
+              Navigator.push(context, route);
+            },
             child: Row(
               children: [
                 const CircleAvatar(

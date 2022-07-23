@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../theme/tpl_page_body_padding.dart';
+
 class ReferFriend extends StatefulWidget {
   const ReferFriend({Key? key}) : super(key: key);
 
@@ -10,6 +12,16 @@ class ReferFriend extends StatefulWidget {
 class _ReferFriendState extends State<ReferFriend> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Refer a friend'),
+        centerTitle: true,
+      ),
+      body: PageBodyPadding(
+        children: const [
+          Text('Refer a friend'),
+        ]
+      ),
+    );
   }
 }

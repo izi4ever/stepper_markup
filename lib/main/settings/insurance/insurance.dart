@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../theme/tpl_page_body_padding.dart';
+
 class Insurance extends StatefulWidget {
   const Insurance({Key? key}) : super(key: key);
 
@@ -10,6 +12,16 @@ class Insurance extends StatefulWidget {
 class _InsuranceState extends State<Insurance> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Insurance'),
+        centerTitle: true,
+      ),
+      body: PageBodyPadding(
+        children: const [
+          Text('Insurance'),
+        ]
+      ),
+    );
   }
 }

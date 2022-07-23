@@ -9,6 +9,15 @@ ThemeData customTheme(BuildContext context) {
       foregroundColor: Colors.blueGrey[900],
       elevation: 0,
       shape: const Border(bottom: BorderSide(width: 1, color: Color(0xffdddddd))),
+      toolbarHeight: 43,
+      iconTheme: const IconThemeData(
+        color: Color(0xff057afb),
+      ),
+      titleTextStyle: const TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w800,
+        color: Colors.black,
+      ),
     ),
     scaffoldBackgroundColor: const Color(0xfff1f5f9),
     textTheme: GoogleFonts.vollkornTextTheme(
