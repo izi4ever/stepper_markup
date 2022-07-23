@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'theme.dart';
+import 'theme/theme.dart';
 import 'main/bottom_nav_bar.dart';
 
 void main() => runApp(const MyApp());

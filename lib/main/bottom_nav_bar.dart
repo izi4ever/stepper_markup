@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:stepper_markup/main/home_page/page_1.dart';
-import 'package:stepper_markup/main/home_page/page_2.dart';
+import 'home_page/page_1.dart';
+import 'home_page/page_2.dart';
+import 'settings/settings.dart';
 import 'home_page/home_page.dart';
+import 'home_page/page_3.dart';
+import 'home_page/page_4.dart';
 import 'popup_calendar/alert_dialog.dart';
 import 'tab_bar_item.dart';
 
@@ -34,6 +37,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
           case 0: return HomePage(upToDateTime: lastTime);
           case 1: return const Page1();
           case 2: return const Page2();
+          case 3: return const Page3();
+          case 4: return const Page4();
+          case 5: return Settings();
         }
       }(),
       bottomNavigationBar: BottomNavigationBar(

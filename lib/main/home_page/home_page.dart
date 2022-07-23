@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:stepper_markup/theme/theme_const.dart';
+import 'package:stepper_markup/theme/tpl_card_default.dart';
+import 'package:stepper_markup/theme/tpl_page_body_padding.dart';
 
-import 'widgets/custom_stepper.dart';
+// import '../../theme_const.dart';
+import '../header.dart';
+import 'stepper/card_with_stepper.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({
@@ -20,73 +24,23 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(15),
+    return PageBodyPadding(
       children: [
-        ListTile(
-          title: const Text('Logotip', style: TextStyle(
-            fontWeight: FontWeight.w900,
-            fontSize: 24,
-          )),
-          trailing: Icon(
-            FontAwesomeIcons.bell,
-            size: 22,
-            color: Colors.blueGrey[900],
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            children: const [
-              ListTile( 
-                contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 22),
-                title: Text('Your journey', style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 18,
-                ))
-              ),
-              Divider(height: 1, thickness: 0.04, color: Color(0xff000000)),
-              CustomStepper(),
-            ],
-          ),
-        ),
-
-
+        Header(),
+        CardWithStepper(),
         SizedBox(
           height: 300,
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              children: [
-                const ListTile( 
-                  contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 22),
-                  title: Text('Upcoming', style: TextStyle(
-                    fontWeight: FontWeight.w900,
-                    fontSize: 18,
-                  ))
-                ),
-                const Divider(height: 1, thickness: 0.04, color:  Color(0xff000000)),
-                SizedBox(
-                  width: double.infinity,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 22),
-                    child: Text(
-                      () {
-                        if (widget.upToDateTime == null) {
-                          return 'You have no upcoming events';
-                        } else {
-                          DateTime? dt = widget.upToDateTime;
-                          return DateFormat().add_yMMMMd().add_jm().format(dt!);
-                        }
-                      }()
-                    ),
-                  ),
-                )
-              ],
+          child: CardDefault(
+            title: 'Upcoming', 
+            child: Text(
+              () {
+                if (widget.upToDateTime == null) {
+                  return 'You have no upcoming events';
+                } else {
+                  DateTime? dt = widget.upToDateTime;
+                  return DateFormat().add_yMMMMd().add_jm().format(dt!);
+                }
+              }()
             ),
           ),
         ),

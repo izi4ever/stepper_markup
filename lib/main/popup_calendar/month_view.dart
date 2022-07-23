@@ -8,17 +8,14 @@ class MonthView extends StatefulWidget {
   MonthView({
     Key? key,
     required this.selectedTimeValue,
-    // required this.highlightTimeValue,
     required this.selectedDayID,
     required this.selectedDay,
     required this.today,
   }) : super(key: key);
 
   void Function(DateTime?) selectedTimeValue;
-  // void Function(TimeOfDay?) highlightTimeValue;
   void Function(int) selectedDayID;
   final void Function(DateTime) selectedDay;
-  // DateTime selectedDay;
   DateTime today;
 
   @override
@@ -46,9 +43,9 @@ class _MonthViewState extends State<MonthView> {
       );
 
   void getDataFromInputList() {
-    for (int i = 0; i < freeTime.length; i++) {
-      if (freeTime[i][0] == widget.today) {
-        widget.selectedDayID(i);
+    for (int i = 0; i < freeTime.length; i++) {                 // During first loading don't load hours if today has it
+      if (freeTime[i][0] == widget.today) {                     // FIXME Erorr setState before initState. Future? Where?
+        // widget.selectedDayID(i);                             // For Future this method should return result
       }
       _markedDateMap.add(
         freeTime[i][0],
@@ -72,9 +69,7 @@ class _MonthViewState extends State<MonthView> {
         setState(() {
           _currentDate = date;
           widget.selectedDay(date);
-          // widget.selectedDay(_currentDate);
           widget.selectedTimeValue(null);
-          // widget.highlightTimeValue(null);
           
           if (events.isNotEmpty) {
             widget.selectedDayID(events[0].id!);
@@ -115,6 +110,7 @@ class _MonthViewState extends State<MonthView> {
       markedDateIconBuilder: (event) {
         return event.icon;
       },
+      showOnlyCurrentMonthDate: true,
       dayPadding: 0,
     );
   }

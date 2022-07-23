@@ -14,8 +14,11 @@ ThemeData customTheme(BuildContext context) {
     textTheme: GoogleFonts.vollkornTextTheme(
       Theme.of(context).textTheme,
     ),
-    cardTheme: const CardTheme(
-      margin: EdgeInsets.only(top: 14),
+    cardTheme: CardTheme(
+      margin: const EdgeInsets.only(top: 14),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: Colors.blueGrey[900],

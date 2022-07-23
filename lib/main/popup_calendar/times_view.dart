@@ -24,8 +24,14 @@ class TimesView extends StatefulWidget {
 class _TimesViewState extends State<TimesView> {
   late DateTime selectedTime;
   TimeOfDay? highlightTime;
+  DateTime? newSelectedDay;
 
   List getFreeTimeListByDayIndex(int index) {
+    if (newSelectedDay != widget.selectedDay) {
+      highlightTime = null;
+      newSelectedDay = widget.selectedDay;
+    } 
+
     if (index > -1) {
       return freeTime[index][1]
           .map(
@@ -41,7 +47,7 @@ class _TimesViewState extends State<TimesView> {
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Text(
-                  '${e.format(context)}',                                       // TODO Тут оставить так
+                  '${e.format(context)}',
                   maxLines: 1,
                   style: GoogleFonts.roboto(
                     textStyle: TextStyle(
