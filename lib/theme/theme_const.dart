@@ -1,3 +1,3 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// EdgeInsets kPageContentPadding = const EdgeInsets.all(15);
+TextStyle kTextHeader1 = const TextStyle(fontSize: 18, fontWeight: FontWeight.w900);

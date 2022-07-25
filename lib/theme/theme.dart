@@ -38,8 +38,24 @@ ThemeData customTheme(BuildContext context) {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25),
         ),
+        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 24),
         elevation: 0,
       ),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        primary: Colors.blueGrey[900],
+        backgroundColor: const Color(0xfff9fafc),
+        // side: BorderSide(color: Colors.grey[200]!, width: 1),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 24),
+      )
+      // style: ButtonStyle(
+      //   textStyle: ,
+      // ),
+      // style: TextStyle(color: Colors.blueGrey[900]!),
     ),
     dialogTheme: const DialogTheme(
       shape: RoundedRectangleBorder(
