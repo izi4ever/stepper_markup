@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stepper_markup/main/settings/profile_settings/get_avatar.dart';
 
 import '../../../theme/theme_const.dart';
 
@@ -33,7 +34,10 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Route route = MaterialPageRoute(builder: (context) => GetAvatar());
+                    Navigator.push(context, route);
+                  },
                   style: ElevatedButton.styleFrom(
                     primary: const Color(0xfff9fafc),
                     padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 24),

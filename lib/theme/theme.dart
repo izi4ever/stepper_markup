@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ThemeData customTheme(BuildContext context) {
@@ -18,6 +19,8 @@ ThemeData customTheme(BuildContext context) {
         fontWeight: FontWeight.w800,
         color: Colors.black,
       ),
+      // systemOverlayStyle: SystemUiOverlayStyle.systemStatusBarContrastEnforced,
+      // systemOverlayStyle: SystemChrome
     ),
     scaffoldBackgroundColor: const Color(0xfff1f5f9),
     textTheme: GoogleFonts.vollkornTextTheme(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:stepper_markup/theme/form_dropdown_field.dart';
 
 import '../../../theme/tpl_card_without_header.dart';
@@ -30,7 +31,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
     List<List<dynamic>> listDropdownFieldDate = [
       [10, 'Year', listYear, selectedYear, 7],
       [10, 'Day', listDay, selectedDay, 7],
-      [10, 'Month', listMonth, selectedMonth, 0],
+      [15, 'Month', listMonth, selectedMonth, 0],
     ];
 
     return Scaffold(
@@ -90,9 +91,10 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                                   hintText: e[1],
                                   items: [
                                     ...e[2].map(
-                                      (e) => DropdownMenuItem(
-                                        value: e,
-                                        child: Text(e.toString()),
+                                      (element) => DropdownMenuItem(
+                                        value: element,
+                                        child: (e[1] == 'Month') ? Text(DateFormat('MMMM').format(DateTime(0, element)))
+                                          : Text(element.toString()),
                                       ),
                                     ),
                                   ],
