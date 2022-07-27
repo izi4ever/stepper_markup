@@ -46,9 +46,14 @@ class _CustomCalendarState extends State<CustomCalendar> {
               });
             }, 
             selectedDayID: (int value) {
-              setState(() {
-                selectedDayIndex = value;
+              Future.delayed(Duration.zero,(){                          // setState is wrapped in delayed because selectedDayID 
+                setState(() {                                           // is generated in initState of MonthView
+                  selectedDayIndex = value;
+                });
               });
+              // setState(() {
+              //   selectedDayIndex = value;
+              // });
             }, 
             selectedDay: (DateTime value) {
               setState(() {

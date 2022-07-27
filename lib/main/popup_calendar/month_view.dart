@@ -26,7 +26,7 @@ class _MonthViewState extends State<MonthView> {
   late DateTime _currentDate;
 
   @override
-  void initState() {
+  initState() {
     _currentDate = widget.today;
     getDataFromInputList();
 
@@ -42,10 +42,10 @@ class _MonthViewState extends State<MonthView> {
         child: Text(day, style: const TextStyle(color: Colors.black, fontSize: 14)),
       );
 
-  void getDataFromInputList() {
+  getDataFromInputList() {
     for (int i = 0; i < freeTime.length; i++) {                 // During first loading don't load hours if today has it
-      if (freeTime[i][0] == widget.today) {                     // FIXME Erorr setState before initState. Future? Where?
-        // widget.selectedDayID(i);                             // For Future this method should return result
+      if (freeTime[i][0] == widget.today) {                     // FIXME Erorr setState before initState
+        widget.selectedDayID(i);
       }
       _markedDateMap.add(
         freeTime[i][0],

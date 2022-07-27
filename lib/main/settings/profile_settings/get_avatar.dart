@@ -25,47 +25,41 @@ class _GetAvatarState extends State<GetAvatar> {
         children: [
           Container(
             child: imageFile == null
-                ? Container(
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ElevatedButton(
-                      onPressed: () {
-                        _getFromGallery();
-                      },
-                      child: Text("PICK FROM GALLERY"),
-                    ),
-                    Container(
-                      height: 40.0,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        _getFromCamera();
-                      },
-                      child: Text("PICK FROM CAMERA"),
-                    )
-                  ],
-                ),
-              )
-              : Container(
-                child: Image.file(
-                  imageFile!,
-                  fit: BoxFit.cover,
-                ),
+              ? Container(
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      _getFromGallery();
+                    },
+                    child: Text('From gallery'),
+                  ),
+                  Container(
+                    height: 40.0,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      _getFromCamera();
+                    },
+                    child: Text('From camera'),
+                  )
+                ],
+              ),
+            )
+            : Container(
+              child: Image.file(
+                imageFile!,
+                fit: BoxFit.cover,
               ),
             ),
-          // ElevatedButton(
-          //   onPressed: () {}, 
-          //   child: const Text('Get image')
-          // ),
+          ),
         ],
       ),
     );
   }
 
-
-  /// Get from gallery
   _getFromGallery() async {
     XFile? pickedFile = await ImagePicker().pickImage(
       source: ImageSource.gallery,
@@ -79,7 +73,6 @@ class _GetAvatarState extends State<GetAvatar> {
     }
   }
 
-  /// Get from Camera
   _getFromCamera() async {
     XFile? pickedFile = await ImagePicker().pickImage(
       source: ImageSource.camera,
