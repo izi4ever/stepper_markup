@@ -73,7 +73,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                         ], 
                         onChanged: (gender) {
                           setState(() {
-                            _selectedGender = gender as String;
+                            _selectedGender = gender as String?;
                           });
                         },
                         value: _selectedGender,
@@ -83,7 +83,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                       Row(
                         children: [
                           ...listDropdownFieldDate.map(
-                            (e) => Expanded(
+                            (List e) => Expanded(
                               flex: e[0],
                               child: Container(
                                 margin: EdgeInsets.only(right: double.parse(e[4].toString())),
@@ -91,7 +91,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                                   hintText: e[1],
                                   items: [
                                     ...e[2].map(
-                                      (element) => DropdownMenuItem(
+                                      (dynamic element) => DropdownMenuItem(
                                         value: element,
                                         child: (e[1] == 'Month') ? Text(DateFormat('MMMM').format(DateTime(0, element)))
                                           : Text(element.toString()),

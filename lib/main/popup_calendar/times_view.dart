@@ -33,7 +33,7 @@ class _TimesViewState extends State<TimesView> {
     } 
 
     if (index > -1) {
-      return freeTime[index][1]
+      return freeSlots[index].times
           .map(
             (e) => GestureDetector(
               child: Container(

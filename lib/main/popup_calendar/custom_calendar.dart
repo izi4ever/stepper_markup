@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:stepper_markup/main/popup_calendar/free_time_list.dart';
 import 'package:stepper_markup/main/popup_calendar/month_view.dart';
 import 'package:stepper_markup/main/popup_calendar/times_view.dart';
 
@@ -18,18 +19,16 @@ class CustomCalendar extends StatefulWidget {
 class _CustomCalendarState extends State<CustomCalendar> {
   int selectedDayIndex = -1;
 
-  DateTime getToday() {
-    DateTime now = DateTime.now();
-    return DateTime(now.year, now.month, now.day);
-  }
-
   late DateTime today;
   late DateTime selectedDay;
 
   @override
   void initState() {
-    selectedDay = getToday();
-    today = getToday();
+    final now = DateTime.now();
+    final nowRaw = DateTime(now.year, now.month, now.day);
+    selectedDay = nowRaw;
+    today = nowRaw;
+    selectedDayIndex = freeSlots.indexWhere((DateSlot element) => element.date == nowRaw);
     super.initState();
   }
 
@@ -44,17 +43,12 @@ class _CustomCalendarState extends State<CustomCalendar> {
               setState(() {
                 widget.onDateTimeTap(value);
               });
-            }, 
+            },
             selectedDayID: (int value) {
-              Future.delayed(Duration.zero,(){                          // setState is wrapped in delayed because selectedDayID 
-                setState(() {                                           // is generated in initState of MonthView
-                  selectedDayIndex = value;
-                });
+              setState(() {
+                selectedDayIndex = value;
               });
-              // setState(() {
-              //   selectedDayIndex = value;
-              // });
-            }, 
+            },
             selectedDay: (DateTime value) {
               setState(() {
                 selectedDay = value;

@@ -43,17 +43,15 @@ class _MonthViewState extends State<MonthView> {
       );
 
   getDataFromInputList() {
-    for (int i = 0; i < freeTime.length; i++) {                 // During first loading don't load hours if today has it
-      if (freeTime[i][0] == widget.today) {                     // FIXME Erorr setState before initState
-        widget.selectedDayID(i);
-      }
+    for (int i = 0; i < freeSlots.length; i++) {                 // During first loading don't load hours if today has it
+      final date = freeSlots[i].date;
       _markedDateMap.add(
-        freeTime[i][0],
+        date,
         Event(
           id: i,
-          date: freeTime[i][0],
+          date: date,
           icon: freeDayIcon(
-            freeTime[i][0].day.toString(),
+            date.day.toString(),
           ),
         ),
       );
